@@ -54,6 +54,6 @@ class PrimerTablaDetail(APIView):
         objetive = self.get_object(pk)
         if objetive!="No existe":
             objetive.delete()
-            return Response("Eliminao",  status = status.HTTP_200_OK)
+            return Response("Eliminado",  status = status.HTTP_200_OK)
         else:
-            return Response("Dato no econtrado", status = status.HTTP_400_BAD_REQUEST)
+            return Response("No se encontro", status = status.HTTP_400_BAD_REQUEST)

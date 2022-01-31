@@ -15,3 +15,8 @@ pip install django-filter
 ```bash 
 'rest_framework',
 ```
+
+## Libreria para variables de entornno
+```bash
+'pip install python-dotenv',
+```
