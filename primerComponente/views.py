@@ -9,13 +9,27 @@ from primerComponente.models import PrimerTabla
 
 # importaciones de serializadores
 from primerComponente.serializers import PrimerTablaSerializer
+# importacion de tipo json
+import json
+
 
 # Create your views here.
+#responseOk='{ "messages":"success", "pay_load": "serializer.data","status":"status"}'
+#responseOk = json.loads(responseOk)
+
 class PrimerTablaList(APIView):
+    def createJson(self,message,data,status):
+        custom={"messages":message,"pay_load":data,"status":status}
+        auxiliar=json.dumps(custom)
+        responseOk=json.loads(auxiliar)
+        return responseOk
+
+
     def get(self, request, format=None):
         queryset=PrimerTabla.objects.all()
         serializer=PrimerTablaSerializer(queryset,many=True ,context={'request':request})
-        return Response(serializer.data)
+        responseOk=self.createJson("succes",serializer.data,"funciona")
+        return Response(responseOk)
     
 # Data
 
