@@ -10,6 +10,9 @@ pip install markdown
 ```bash       
 pip install django-filter  
 ```
+```bash
+pip install Pillow
+```
 
 ## Agregar librería a INSTALLED_APPS en settings
 ```bash 
