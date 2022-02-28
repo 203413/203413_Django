@@ -4,7 +4,7 @@ from rest_framework import routers, serializers, viewsets
 from django.views.static import serve
 from django.conf import settings
 # Importación de Registro
-from registro.api import UserAPI
+from registro.views import RegistroView
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -25,8 +25,8 @@ router.register(r'users', UserViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    re_path(r'^api/v1/crear_usuario', UserAPI.as_view(), name='crear_usuario'),
-    re_path(r'^api/v1/login',include('Login.urls')),
+    re_path(r'^api/v1/crear_usuario', include('registro.urls')),
+    re_path(r'^api/',include('Login.urls')),
     re_path(r'^api/v1/load_image/', include('loadimage.urls')),
     re_path(r'assets/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
     re_path(r'^api/v1/primer_componente/',include('primerComponente.urls')),
