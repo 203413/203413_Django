@@ -28,6 +28,7 @@ urlpatterns = [
     re_path(r'^api/v1/crear_usuario', include('registro.urls')),
     re_path(r'^api/',include('Login.urls')),
     re_path(r'^api/v1/load_image/', include('loadimage.urls')),
+    re_path(r'^api/v1/user/', include('UserProfile.urls')),
     re_path(r'assets/(?P<path>.*)$',serve,{'document_root':settings.MEDIA_ROOT}),
     re_path(r'^api/v1/primer_componente/',include('primerComponente.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
